@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+        <!-- Firebase -->
+        <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+
+        <!-- CodeMirror -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.3.0/codemirror.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.5.0/mode/javascript/javascript.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.3.0/codemirror.css" />
+
+        <!-- Firepad -->
+        <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.1.0/firepad.css" />
+        <script src="https://cdn.firebase.com/libs/firepad/1.1.0/firepad.min.js"></script>
+
+          <style>
+            ul {
+                list-style-type: none;
+            }
+
+            .title {
+                text-align: center;
+            }
+
+            #firepad-container {
+              width: 600px;
+              height: 600px;
+            }
+          </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div class="title">
+            <h1>Hello Hackaton!</h1>
+        </div>
+
+        <script src='//static.opentok.com/webrtc/v2.2/js/opentok.min.js'></script>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div id="firepad-container"></div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div id="myPublisherDiv" class="col-md-6"></div>
+                    <div id="subscribersDiv" class="col-md-6"></div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <span class="glyphicon glyphicon-comment"></span> Chat
+                                </div>
+                                <div class="panel-body">
+                                    <ul id="messages"></ul>
+                                </div>
+                                <div class="panel-footer">
+                                    <div class="input-group">
+                                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                                        <span class="input-group-btn">
+                                            <a href="#" id="send" class="btn btn-primary btn-lg active" role="button">Send</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+
+        <script>
+            var name = 'Israel Sotomayor';
+            var other_name = 'Peter Rhoades';
+            var target_side = 'left';
+            var target_color = "3498db";
+            var token = 'T1==cGFydG5lcl9pZD00NTA4MzgyMiZzaWc9MWQzOGE4Mzk2MjU2ZTNiMTZkZWFkOGZiMjZhYTc3MmFkNWVmNDUwNDpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTFfTVg0ME5UQTRNemd5TW41LU1UUXhOVGN3TnpNMk1qa3pObjVEYVZKeldUQlFVRVJ2T1ROS1FUQjBRbmN5YUZCbFYwTi1mZyZjcmVhdGVfdGltZT0xNDE1NzQxOTI1Jm5vbmNlPTAuODIyOTY2ODU0ODcwNDQ3MyZleHBpcmVfdGltZT0xNDE4MzMzOTAy';
+        </script>
+
+        <script src="js/main.js"></script>
+
+        <script>
+            $('#send').on('click', function(e) {
+                e.preventDefault;
+                session.signal(
+                {
+                    data: $('#btn-input').val(),
+                    type: target_side
+                },
+                function(error) {
+                    $('#btn-input').val('');
+                    if (error) {
+                      console.log("signal error (" + error.code + "): " + error.reason);
+                    } else {
+                      console.log("signal sent.");          
+                    }
+                });
+            });
+        </script>
+
+        
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+    </body>
+</html>
